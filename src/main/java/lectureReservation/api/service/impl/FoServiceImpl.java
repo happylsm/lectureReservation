@@ -56,7 +56,12 @@ public class FoServiceImpl implements FoService{
                 .build();
 		
 		Optional<LectureEntity> lectureEntity = lectureRepo.findById(request.getLetureId());
-        
+		List<String> applicantEntity = applicantRepo.findByEmployeeId(request.getEmployeeId());
+		
+		if (applicantEntity.contains(request.getLetureId())) {
+			throw new CustomException("이미 신청한 강연 입니다.", ErrorCode.DUPLICATE_APPLICATION);
+		}
+		
 		lectureEntity.ifPresentOrElse(getLecture -> {
 			int count = getLecture.getNumberApplicants() - 1;
 			if (count >= 0) {
