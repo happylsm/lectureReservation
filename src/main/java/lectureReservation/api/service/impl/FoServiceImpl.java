@@ -7,6 +7,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import lectureReservation.api.dto.ApplicantListDto;
 import lectureReservation.api.dto.LectureListDto;
@@ -28,6 +29,7 @@ public class FoServiceImpl implements FoService{
 	IApplicantRepo applicantRepo;
 
 	@Override
+	@Transactional(readOnly = true)
 	public Map<String, Object> getLectures() {
 		Map<String, Object> res = new HashMap<String, Object>();
 		LectureListDto.resultMsg rmg = new LectureListDto.resultMsg();
@@ -78,6 +80,7 @@ public class FoServiceImpl implements FoService{
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public Map<String, Object> getMyLectures(String employeeId) {
 		Map<String, Object> res = new HashMap<String, Object>();
 		LectureListDto.resultMsg rmg = new LectureListDto.resultMsg();
