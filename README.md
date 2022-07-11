@@ -13,6 +13,7 @@
 * api 케이스가 단순하기 때문에 return type은 Map과 DTO 두 케이스를 사용
 * id값 생성
   * 각 id 값은 데이터 생성시 자동으로 추가되도록 코드를 작성함. RandomStringUtils.randomNumeric() 을 사용해 랜덤으로 들어가도록 만듬
+* 1인 1좌석만 예약이 가능하기 때문에 예약시 신청인원에 1씩 감소되도록 처리
 
 ## Dependencies
 
